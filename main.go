@@ -59,6 +59,7 @@ func healthHandler(cfg Config) http.HandlerFunc {
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(cfg)
 	}
+	log.Printf("Completed")
 }
 
 func main() {
