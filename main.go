@@ -73,13 +73,7 @@ func main() {
 		go worker(i, &wg)
 	}
 
-	mux := http.NewServeMux()
-	mux.HandleFunc("/health", healthHandler(cfg))
-
-	server := &http.Server{
-		Addr:    ":" + cfg.Port,
-		Handler: mux,
-	}
+	server := newServer(cfg)
 
 	go func() {
 		log.Printf("http server on :%s\n", cfg.Port)
